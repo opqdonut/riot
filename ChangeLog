@@ -1,0 +1,576 @@
+2008-06-18 13:56 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  tagged riot-1ds-20080618
+
+2008-06-18 13:52 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Defines
+
+2008-06-18 13:52 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Import tune
+
+2008-06-18 13:25 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * README updates
+
+2008-06-18 13:13 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Use local curses interface (again).
+  Too much trouble with HSCurses, moving targets in general, and how the
+  Haskell folks are completely orgastic about Huge.Bureaucratic.Hierarchies.
+  That.Minutely.Classify.Everything.To.An.Utter.Lack.Of.Usability.
+  (Something lightweight and local like -import Curses=$LOCATION/curses.so
+  would be so much simpler and more flexible.)
+
+2008-06-18 13:11 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Updates to curses code
+
+2008-06-18 12:47 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Included old curses interface from before switch to hscurses
+
+2006-05-02 18:29 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added TODO.riot.
+
+2006-05-02 18:26 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Fixed empty bottom line drawing.
+
+2006-05-02 10:54 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * README updates.
+
+2006-05-01 21:18 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Forgot set DOCS.
+
+2006-05-01 21:07 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  tagged riot-1ds-20060502
+
+2006-05-01 21:05 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Build with ghc --make.
+  - Got fed up with the old kludge.
+  - As a consequence, it is not possible to build against hs-plugins 
+    anymore.
+
+2006-05-01 20:37 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Tiny fix in mbox parser.
+
+2006-04-09 11:44 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Fixed boot loader to load the right module.
+
+2006-03-13 17:26 UTC  fis@etc-network.de
+  * replaced deprecated calls to Data.FiniteMap by calls to Data.Map.
+
+2006-03-11 11:34 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added e_write query for writing copies of entries to files.
+
+2006-03-11 11:33 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Moved to/from_locale to Riot.Locale.
+
+2006-02-19 14:22 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Remember previous search.
+
+2006-02-17 18:56 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added search support.
+
+2006-02-17 17:51 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added entry tree folding routines.
+
+2006-02-13 01:24 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added some basic query editing support.
+
+2006-02-05 19:44 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Preliminary query support code.
+  * Had to do a lot of reorganisation to be able to put this in
+    Riot.Query due to poor support for circular module dependencies.
+
+2006-01-29 20:21 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Set O_NONBLOCK flag on return from editor.
+
+2006-01-29 20:19 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Do not default to using hs-plugins.
+  Either GHC6.4 (at least on Debian) is a totally fucked up mess,
+  or hs-plugins installation is broken, as it gets lost all the time.
+
+2005-10-27 01:54 UTC  Stefan Wehr <mail@stefanwehr.de>
+  * added feature for making backups of riot's mbox file
+  
+  The number of backups can be customized. If x is riot's mbox file and
+  n is the number of backups, then the backups are written tp
+  x.0, ..., x.(n-1)
+
+2005-10-27 01:54 UTC  Stefan Wehr <mail@stefanwehr.de>
+  * changed my name :-)
+
+2005-10-27 01:53 UTC  Stefan Wehr <mail@stefanwehr.de>
+  * fixed riot so that you can use a custom Config file with and without hs-plugins
+
+2005-10-27 00:36 UTC  Stefan Wehr <mail@stefanwehr.de>
+  * added `-package hscurses' flag
+
+2005-10-27 00:35 UTC  Stefan Wehr <mail@stefanwehr.de>
+  * changed Config.hs to make it easier to change from the default to customized settings
+
+2005-08-22 16:05 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Use HSCurses.
+
+2005-08-22 12:27 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Plugins was recently renamed to System.Plugins.
+
+2005-08-21 22:39 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Fixed size update when returning from editor.
+
+2005-05-12 16:04 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Fixed do-block indentation in some contribs.
+
+2005-05-11 18:43 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Use CWString from Foreign.C.String on GHC6.4.
+
+2005-05-11 18:32 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Some more Makefile changes.
+
+2005-05-11 18:27 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Moved some files under Riot/.
+
+2005-05-11 17:32 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Changes to build with GHC6.4.
+  - System.Posix.Signals.setStoppedChildFlag is broken in GHC6.4 and is
+    not used now. This means that you can not suspend (^Z) your editor 
+    and expect Riot to work after that.
+
+2005-05-06 15:17 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  tagged riot-1ds-20050506
+
+2005-05-06 15:16 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * It's 2005! Other minor README update.
+
+2005-04-17 00:05 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Oops. There was still a reference to AntiMemo.
+
+2005-03-15 19:50 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Attempts to fix the Makefile.
+
+2005-03-15 19:44 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * MBoxEntry fields are now strict.
+
+2005-03-15 19:32 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Addressed excessive memory usage on save.
+
+2005-03-05 17:50 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Use PackedString for storing mbox entries for smaller memory usage.
+
+2005-02-11 15:33 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Enabled e_fallback control key check.
+
+2005-02-04 19:38 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added new credits to README.
+
+2005-02-01 19:51 UTC  mail@stefanheimann.net
+  * Improved key handling
+  
+  - Message displayed when key is not bound
+  - improved support for submaps
+  - added new message line (below the bottom info line)
+
+2005-02-01 14:00 UTC  mail@stefanheimann.net
+  * Added help screen
+  
+  Just hitting '?' takes you the a small help screen
+
+2004-12-18 02:17 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Fixed dynamic build.
+
+2004-12-18 02:16 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Oops. One NOINLINE was in the wrong (.hs instead .hsc) file originally.
+
+2004-12-17 23:55 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * USE_HS_PLUGINS should be respected again.
+
+2004-12-17 23:48 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * New build system ripped from Yi.
+  
+  Dynamic version doesn't work now.
+  
+
+2004-12-05 10:22 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Moved Entry and EntryTree back to Entry.hs. Just EditableEntry needs to be in Riot.hs.
+
+2004-12-03 18:51 UTC  mail@stefanheimann.net
+  * fix-cyclic-dep
+  
+  - Fixed the cyclic dependency between Entry and Riot by moving some code from the
+    Entry module into Riot.
+  - Added automatic dependency generation to the Makefile. This will hopefully help me
+    to detect cyclic dependencies a little bit sooner.
+
+2004-12-01 16:26 UTC  mail@stefanheimann.net
+  * encoding
+  
+  The file encoding can now be customized by the user. There is a new variable
+  'cfg_encoding' which can be set to a value like 'Enc "iso-8859-1"'. The default
+  remains utf-8.
+  
+  Lot's of refactorings were necessary to make this fix possible. As a result, 
+  a lot of function in the UI module are now typed in the RI monad.
+  
+  
+
+2004-12-03 15:46 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added newline.
+
+2004-12-01 12:31 UTC  mail@stefanheimann.net
+  * decode-subject
+  
+  Subject is not encoded/decoded anymore.
+  
+
+2004-12-01 12:02 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added X-Riot-Edited field.
+
+2004-12-01 12:00 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Some subject line usage changes.
+
+2004-12-01 11:13 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Fixed primes to underscores.
+
+2004-12-01 10:58 UTC  mail@stefanheimann.net
+  * config
+  
+  Make Config.hs working again. When using compile-time configuration only, the Main module
+  used ConfigAPI for accessing the configuration settings. However, it should use the Config
+  module, so that settings can be overridden here.
+  
+  Note: I did not test runtime loading, I hope I didn't break anything
+  
+
+2004-12-01 10:22 UTC  mail@stefanheimann.net
+  * title-in-subject
+  
+  The "title" of an entry (the first non-empty line) is now stored in the
+  Subject: header. Full backward compatibiliy is ensured. This means you can read
+  entries which have their title in the first non-empty line with the new riot
+  version and you read entries which have their title in the Subject: with the old
+  riot version.
+  
+  This makes it much more convenient to read a riot file with a mail client like
+  mutt.
+  
+  Additionally, I appended '@riot' to every message-id, because mutt needs it for threading. 
+  I also add a new header line 'From: Riot' to newly created entries, which makes them
+  look a bit nicer in a mail client.
+  
+  Note: It is not necessary to convert your old riot files in any way. However, if you want
+  threading in mutt, than you have to append '@riot' to all message ids and to all 
+  'In-Reply-To' headers.
+  
+
+2004-11-23 15:51 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Some further monadisation.
+
+2004-11-12 15:18 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Converted contributions to lower_case_and_underscore.
+
+2004-11-21 16:02 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Larger entry area.
+
+2004-11-05 16:28 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Do not save_always by default. Added missing newline.
+
+2004-11-05 13:42 UTC  mail@stefanheimann.net
+  * monad-patch
+  Added a new module called Riot which contains some basic types as well as the
+  definition of the RI monad. 
+    
+  I have only adapted some functions in the Main module to the new monad, but the
+  other modules should be adapted too.
+  
+  This patch depends on my former patch for saving changes immediately to disk.
+
+2004-11-02 21:14 UTC  mail@stefanheimann.net
+  * save_always
+  This patch adds an option to riot that allows every change to be written 
+  directly to disk.
+  
+  It introduces an additional field in the Config datatype named options. 
+  For now, options has only one field 'save_always'. If save_always is True,
+  all changes are written directly to disk. If save_always is False, changes 
+  are only written when requested by the user.
+
+2004-10-17 17:57 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Fixed mbox From translation.
+
+2004-10-17 15:07 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Fixed #ifdef mess in Ginsu.CWString.
+
+2004-10-17 14:48 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Removed a stray include.
+
+2004-10-16 22:29 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Some stray 0xa0 characters had gotten into the files.
+
+2004-10-16 07:56 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Removed k_map and tag_map from Config.
+
+2004-10-14 08:03 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Updated hs-plugins download link.
+
+2004-10-14 07:51 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added new instructions and credits to README.
+
+2004-10-14 07:45 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added Makefile/system.mk options to build riot without hs-plugins if need be.
+
+2004-10-13 09:29 UTC  dons
+  * No need for special ConfigAPI, fix -i. with ghc-6.2.1
+
+2004-10-13 07:10 UTC  dons
+  * Fix Main.main getArgs handling
+
+2004-10-13 06:50 UTC  dons
+  * Haskell boot loader, for dynamically loaded riot
+
+2004-10-12 00:59 UTC  dons
+  * riot-inplace was ignoring file arguments
+
+2004-10-12 00:44 UTC  dons
+  * Clean up ~/.riotrc handling
+
+2004-10-11 09:47 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Some cleanup.
+
+2004-10-11 09:31 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Replaced prime in a name with underscore.
+
+2004-10-11 09:18 UTC  dons
+  * Fix cleanup of objects and .hi files
+
+2004-10-11 08:36 UTC  dons
+  * tweak build dependencies for Main.hs.in
+
+2004-10-11 08:07 UTC  dons
+  * Missed a bit
+
+2004-10-11 07:50 UTC  dons
+  * Out-of-tree hs-plugins support, and .riotrc support
+
+2004-10-10 06:59 UTC  dons
+  * hs-plugins support for riot
+
+2004-10-10 00:40 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Attempt to load Config.hs with hs-plugins.
+
+2004-10-08 06:30 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Use proper libcurses with ghc-pkg.
+
+2004-10-08 06:07 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Fixed ginsu/ package building patch to work with newer Makefiles.
+
+2004-10-08 05:56 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Applied patch to build ginsu/ as a GHC package.
+
+2004-10-13 11:31 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  tagged riot-pre-hs-plugins
+
+2004-10-05 07:20 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added notice on gmake requirement to README.
+
+2004-10-05 03:09 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  tagged riot-1ds-20041005
+
+2004-10-01 17:49 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Use the HOME environment variable if getUserEntryForID fails
+  (due to the system not supporting getpwuid_r).
+
+2004-09-29 13:15 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added extra security check to wcsrtombs
+
+2004-09-28 20:55 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Improved handling of editor being stopped.
+
+2004-09-28 18:40 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added IO monad versions of to/from_unicode.
+
+2004-09-28 18:39 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Force result of wcsrtombs to be null-terminated.
+
+2004-09-28 09:32 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Some wchar support compilation option changes; system.mk was missing.
+
+2004-09-28 08:01 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added character set support. 
+  
+  New entries are saved in utf-8 encoding.
+  
+
+2004-09-27 13:12 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Better option parsing with GetOpt.
+
+2004-09-27 05:01 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * README improvements.
+
+2004-09-24 21:13 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  tagged riot-1ds-20040924
+
+2004-09-24 21:11 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added Makefile kludge
+
+2004-09-24 20:38 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added predist.sh.
+
+2004-09-24 20:01 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Check for unmodified and empty entries after returning from editor.
+
+2004-09-24 20:00 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Moved signal handlers to Main.hs.
+
+2004-09-24 19:53 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * SIGWINCH should now be handled.
+
+2004-09-24 07:22 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Initial file loading changes.
+
+2004-09-24 06:54 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Improved tagging support.
+
+2004-09-23 23:35 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Bullet changes etc.
+
+2004-09-23 21:29 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added a README and 'make install' target.
+
+2004-09-23 20:31 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Threading information is now saved.
+
+2004-09-23 19:29 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Add new line when saving at end of message body if it is missing.
+
+2004-09-23 19:29 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Beep on error.
+
+2004-09-23 19:21 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Improved error and message display.
+
+2004-09-23 18:42 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added 'save changes' exit query.
+
+2004-09-23 17:53 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added primitive saving support.
+
+2004-09-23 06:35 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added tab stop support in text display.
+
+2004-09-23 06:20 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added LICENSE.
+
+2004-09-23 06:15 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Moved some colour and attribute code to Style.hs.
+
+2004-09-23 06:15 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Mbox reading code should handle lines beginning with 'From ' properly.
+
+2004-09-23 04:15 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added mbox threading.
+
+2004-09-23 02:01 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Support reading notes from an mbox format file.
+
+2004-09-23 01:02 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Initialisation code improvements.
+
+2004-09-23 00:42 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Some empty entry list handling fixes.
+
+2004-09-23 00:25 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added submap notification.
+
+2004-09-23 00:23 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Oops. main.hs was missing.
+
+2004-09-22 22:46 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Improved entry tree map functions.
+
+2004-09-22 21:57 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added tagging.
+
+2004-09-22 15:53 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Handle cursor visibility properly when launching an editor.
+
+2004-09-22 15:41 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Improved undo/redo.
+
+2004-09-22 15:32 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added undo/redo.
+
+2004-09-22 07:20 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added some Jed folds.
+
+2004-09-22 07:09 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Improved editing/collapse/expand code.
+
+2004-09-22 01:01 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added some bindings.
+
+2004-09-22 00:10 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added entry indentation.
+
+2004-09-21 23:16 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added entry tree collapsion and expansion.
+
+2004-09-21 03:19 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added editor launching binding; fixed editor file handling.
+
+2004-09-21 01:22 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Display exceptions at bottom of the screen as errors.
+
+2004-09-21 01:03 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added entry deletion binding.
+
+2004-09-21 01:03 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added entry moving code.
+
+2004-09-20 15:07 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added dummy rules to rules.mk.
+
+2004-09-20 01:18 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added EntryTrees
+
+2004-09-19 15:01 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added Editor module for launching an editor.
+
+2004-09-18 22:54 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Improved infolines.
+
+2004-09-18 21:31 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Hide the cursor.
+
+2004-09-18 21:30 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added basic entry navigation.
+
+2004-09-18 18:50 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added Entry class (and had to add type signatures).
+
+2004-09-18 16:53 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added e_pgdn/e_pgup and text position display.
+
+2004-09-18 16:13 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Updated Makefile.
+
+2004-09-18 16:11 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added Version.hs and named the program 'riot' (Riot is an Information Organisation Tool).
+
+2004-09-18 15:40 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Improved scrolling code.
+
+2004-09-18 03:00 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Put both configs in Config.hs.
+
+2004-09-18 00:48 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Moved configuration to ConfigAttr.hs and ConfigKeys.hs.
+
+2004-09-17 23:27 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Some preliminary UI (drawing) work.
+
+2004-09-17 18:34 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added getYX to curses interface.
+
+2004-09-16 13:11 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Some code reorganisation.
+
+2004-09-16 13:00 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Added curses interface from ginsu.
+
+2004-09-16 12:25 UTC  Tuomo Valkonen <tuomov@iki.fi>
+  * Initial record.

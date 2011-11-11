@@ -1,0 +1,50 @@
+
+Riot
+
+Copyright (c) Tuomo Valkonen 2004-2008.
+<tuomov at iki.fi>
+
+<http://iki.fi/tuomov/riot/>
+
+
+BUILDING AND INSTALLING
+
+You will need GHC 6 (The Glorious/Glasgow Haskell Compilation System) and
+GNU make to compile riot. Once you have ensured that you have these programs
+installed,
+
+ 1. Edit system.mk to change some settings for your system (usually in the
+    case it has broken wide character support).
+
+ 2. Run 'make' ('gmake' on some systems) to build riot.
+
+ 3. Run 'make install' to install it.
+
+
+CONFIGURATION
+
+Configuration must be done at build time by editing the Config.hs
+in this directory. See ConfigAPI.hs for the settings that can be
+changed.
+
+
+MISCELLANEOUS NOTES
+
+Riot stores its data in mbox format files: you may open riot files
+in any mail reader, and also open normal mailboxes in riot.
+
+The name of the program is a recursive acronym for 
+'Riot is an Information/Incredible Organisation Tool' .
+
+
+CREDITS
+
+Riot itself was mostly written by me, Tuomo Valkonen. 
+
+Stefan Wehr has written some significant improvements.
+
+The currently dysfunctional support for dynamic loading of 
+configuration with hs-plugins was written by Don Stewart.
+
+The code in Ginsu/ and Curses/ is mostly by John Meacham; see the
+LICENSE therein for details. I have made some minor modifications.
