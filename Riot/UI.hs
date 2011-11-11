@@ -281,7 +281,7 @@ deinit = do
 
 -- Drawing {{{
 
-waddstr w s = Control.Exception.try (Curses.wAddStr w s) >> return ()
+waddstr w s = Curses.wAddStr w s >> return ()
 
 cset_attr (a, p) = do
     Curses.wAttrSet Curses.stdScr (a, p)
@@ -769,7 +769,7 @@ getCh = do
 
 get_key_ :: IO (Maybe Curses.Key)
 get_key_ = do
-    Control.Exception.catch (Curses.cBreak True) (\_ -> return ())
+    Curses.cBreak True
     getCh
 
 get_key :: Entry a => RI a () -> RI a Curses.Key

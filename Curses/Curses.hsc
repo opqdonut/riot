@@ -262,7 +262,7 @@ initCurses = do
     nl False
     leaveOk True
     intrFlush False
-    try $ keypad stdScr True
+    (a :: Either SomeException ()) <- try $ keypad stdScr True 
     defineKey (#const KEY_UP) "\x1b[1;2A"
     defineKey (#const KEY_DOWN) "\x1b[1;2B"
     defineKey (#const KEY_SLEFT) "\x1b[1;2D"

@@ -31,15 +31,12 @@ import Foreign.C
 import Foreign.C.String
 import Foreign.Ptr
 
-#if __GLASGOW_HASKELL__ >= 604
 import Foreign.C.String
 import Ginsu.CWString(withUTF8StringLen, peekUTF8StringLen)
-#else
-import Ginsu.CWString
-#endif    
+
 --import Foreign.Marshal.Array(withArray, peekArray)
 import Control.Exception(bracket)
-import Control.Exception(Exception, try)
+import Control.Exception(SomeException, try)
 import Control.Monad(liftM)
 import System.IO.Unsafe(unsafePerformIO)
 import Char(chr, ord)
@@ -109,12 +106,11 @@ iconv_ str ic =
     withCStringLen str $ do_iconv peekCStringLen ic
 
 -- between 8-bit encodings only
-iconv :: String -> String -> String -> Either Exception String
+iconv :: String -> String -> String -> Either SomeException String
 iconv to from str =
     unsafePerformIO $ try $ with_iconv to from (iconv_ str)
 
 
-#ifdef CF_WCHAR_SUPPORT
 {-
 type CUni = (#type wchar_t)
 cuni_size = (#size wchar_t)
@@ -145,23 +141,12 @@ with_cuni str f =
     where
         l = length str
 
-#else
--- no CF_WCHAR_SUPPORT
-
--- Due to endianness problems, it is easiest to do this through UTF-8
-
-cuni_charset = "UTF-8"
-peek_cuni = peekUTF8StringLen
-with_cuni = withUTF8StringLen
-
-#endif
-
 to_unicode_ :: String -> String -> IO String
 to_unicode_ from str =    
      with_iconv cuni_charset from $
       \ic -> withCStringLen str $ do_iconv peek_cuni ic
 
-to_unicode :: String -> String -> Either Exception String
+to_unicode :: String -> String -> Either SomeException String
 to_unicode from str = 
     unsafePerformIO $ try $ to_unicode_ from str
     
@@ -170,7 +155,7 @@ from_unicode_ to str =
      with_iconv to cuni_charset $
       \ic -> with_cuni str $ do_iconv peekCStringLen ic
 
-from_unicode :: String -> String -> Either Exception String
+from_unicode :: String -> String -> Either SomeException String
 from_unicode from str = 
     unsafePerformIO $ try $ from_unicode_ from str
 

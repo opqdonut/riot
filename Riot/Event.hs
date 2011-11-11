@@ -494,7 +494,7 @@ save_changes = do
         ri_catch e_save do_except
 	return ()
 
-do_except :: Entry a => Control.Exception.Exception -> RI a ELCont
+do_except :: (Control.Exception.Exception ex, Entry a) => ex -> RI a ELCont
 do_except e = do
     s <- get_status
     liftIO $ Curses.beep

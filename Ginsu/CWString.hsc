@@ -10,7 +10,7 @@ module Ginsu.CWString (
     peekUTF8String,
     peekUTF8StringLen,
     -- wchar stuff
-#ifdef CF_WCHAR_SUPPORT
+-- #ifdef CF_WCHAR_SUPPORT
     withCWString,
     withCWStringLen,
     newCWString,
@@ -21,7 +21,7 @@ module Ginsu.CWString (
     CWchar, 
     CWString, 
     CWStringLen,
-#endif
+-- #endif
     -- locale versions 
     withLCString,
     withLCStringLen,
@@ -34,17 +34,17 @@ module Ginsu.CWString (
     ) where
 
 import Data.Bits
-#if __GLASGOW_HASKELL__ >= 603
+-- #asdfif __GLASGOW_HASKELL__ >= 603
 import Foreign.C.String hiding (charIsRepresentable, 
                                 CWString, CWStringLen,
                                 peekCWString, peekCWStringLen,
                                 withCWString, withCWStringLen,
                                 newCWString, newCWStringLen)
 import Foreign.C.Types hiding (CWchar)
-#else
-import Foreign.C.String
-import Foreign.C.Types
-#endif
+-- #asdfelse
+--import Foreign.C.String
+--import Foreign.C.Types
+-- #asdfendif
 import qualified CForeign
 import Char
 import Foreign
@@ -57,8 +57,6 @@ import IO
 #undef CF_WCHAR_SUPPORT
 #endif
 
-
-#ifdef CF_WCHAR_SUPPORT
 
 -- #ifndef CONFIG_INCLUDED
 -- #define CONFIG_INCLUDED
@@ -88,18 +86,6 @@ wcharIsUnicode = True
 -- support functions 
 wNUL :: CWchar
 wNUL = 0
-#ifndef __GLASGOW_HASKELL__
-pairLength :: String -> CString -> CStringLen
-pairLength  = flip (,) . length
-
-cwCharsToChars :: [CWchar] -> [Char]
-cwCharsToChars xs  = map castCWcharToChar xs
-charsToCWchars :: [Char] -> [CWchar]
-charsToCWchars xs  = map castCharToCWchar xs
-
-
-#endif
--- __GLOSGOW_HASKELL__
 
 castCWcharToChar :: CWchar -> Char
 castCWcharToChar ch = chr (fromIntegral ch )
@@ -110,9 +96,6 @@ castCharToCWchar ch = fromIntegral (ord ch)
 
 -- exported functions
 peekCWString    :: CWString -> IO String
-#ifndef __GLASGOW_HASKELL__
-peekCString cp  = do cs <- peekArray0 wNUL cp; return (cwCharsToChars cs)
-#else
 peekCWString cp = loop 0
   where
     loop i = do
@@ -120,12 +103,8 @@ peekCWString cp = loop 0
         if val == wNUL then return [] else do
             rest <- loop (i+1)
             return (castCWcharToChar val : rest)
-#endif
 
 peekCWStringLen           :: CWStringLen -> IO String
-#ifndef __GLASGOW_HASKELL__
-peekCWStringLen (cp, len)  = do cs <- peekArray len cp; return (cwCharsToChars cs)
-#else
 peekCWStringLen (cp, len) = loop 0
   where
     loop i | i == len  = return []
@@ -133,12 +112,8 @@ peekCWStringLen (cp, len) = loop 0
         	val <- peekElemOff cp i
         	rest <- loop (i+1)
         	return (castCWcharToChar val : rest)
-#endif
 
 newCWString :: String -> IO CWString
-#ifndef __GLASGOW_HASKELL__
-newCWString  = newArray0 wNUL . charsToCWchars
-#else
 newCWString str = do
   ptr <- mallocArray0 (length str)
   let
@@ -146,13 +121,8 @@ newCWString str = do
     	go (c:cs) n## = do pokeElemOff ptr (I## n##) (castCharToCWchar c); go cs (n## +## 1##)
   go str 0##
   return ptr
-#endif
 
 newCWStringLen     :: String -> IO CWStringLen
-#ifndef __GLASGOW_HASKELL__
-newCWStringLen str  = do a <- newArray (charsToCWchars str)
-			return (pairLength str a)
-#else
 newCWStringLen str = do
   ptr <- mallocArray0 len
   let
@@ -162,12 +132,8 @@ newCWStringLen str = do
   return (ptr, len)
   where
     len = length str
-#endif
 
 withCWString :: String -> (CWString -> IO a) -> IO a
-#ifndef __GLASGOW_HASKELL__
-withCWString  = withArray0 wNUL . charsToCWchars
-#else
 withCWString str f =
   allocaArray0 (length str) $ \ptr ->
       let
@@ -176,12 +142,8 @@ withCWString str f =
       in do
       go str 0##
       f ptr
-#endif
 
 withCWStringLen         :: String -> (CWStringLen -> IO a) -> IO a
-#ifndef __GLASGOW_HASKELL__
-withCWStringLen str act  = withArray (charsToCWchars str) $ act . pairLength str
-#else
 withCWStringLen str f =
   allocaArray len $ \ptr ->
       let
@@ -192,19 +154,11 @@ withCWStringLen str f =
       f (ptr,len)
   where
     len = length str
-#endif
 
-
-#else
--- no __STDC_ISO_10646__
-wcharIsUnicode = False
-#endif
 
 --
 -- LCString
 --
-
-#if defined(CF_WCHAR_SUPPORT)
 
 newtype MBState = MBState { _mbstate :: (Ptr MBState)}
 
@@ -284,23 +238,6 @@ withLCStringLen s a = withCWString s $ \wcs -> allocaArray0 alen (\cs -> wcsrtom
 
 pairLength1 :: String -> CString -> CStringLen
 pairLength1  = flip (,) . length
-
-
-#else
--- no CF_WCHAR_SUPPORT
-
-charIsRepresentable :: Char -> IO Bool
-charIsRepresentable ch = return $ isLatin1 ch
-
-withLCString = withCString
-withLCStringLen = withCStringLen
-newLCString = newCString
-newLCStringLen = newCStringLen
-peekLCString = peekCString
-peekLCStringLen = peekCStringLen
-
-#endif
--- no CF_WCHAR_SUPPORT
 
 
 -----------------

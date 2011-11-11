@@ -168,7 +168,7 @@ with_status f = do
 -- recent GHC releases.
 
 ri_catch :: Entry e => RI e a     -- The computation to run
-        -> (Exception -> RI e a) -- Handler to invoke if an exception is raised
+        -> (SomeException -> RI e a) -- Handler to invoke if an exception is raised
         -> RI e a
 ri_catch run handler = do
     oldState <- get

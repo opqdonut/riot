@@ -15,6 +15,8 @@ module Riot.RiotMain (
     dynamic_main
 ) where
 
+import Prelude hiding (catch)
+
 import Riot.Entry
 import Riot.MBox
 import Riot.Version           (package, version)
@@ -31,7 +33,7 @@ import qualified Riot.ConfigAPI
 
 import Ginsu.Locale           (setupLocale)
 
-import Control.Exception      (catchJust, ioErrors, throw, bracket)
+import Control.Exception      (catch, throw, bracket, IOException, SomeException)
 import Control.Monad          (liftM, when)
 import Data.IORef
 import Data.Maybe
@@ -58,7 +60,7 @@ default_file = ".riot"
 get_home :: IO (String)
 get_home =
     catch (getRealUserID >>= getUserEntryForID >>= (return . homeDirectory))
-          (\_ -> getEnv "HOME")
+          (\(e :: SomeException) -> getEnv "HOME")
 
 get_default_file :: IO (String)
 get_default_file = do
@@ -89,13 +91,13 @@ do_save fname et =
 
 load_initial :: String -> IO ([EntryTree MBoxEntry], String)
 load_initial fname = do
-    et <- catchJust ioErrors (do_load fname) exh
+    et <- catch (do_load fname) exh
     return (et, fname)
     where
-        exh e = if isDoesNotExistError e then
-                    return []
-                else
-                    ioError e
+        exh (e :: IOException) = if isDoesNotExistError e then
+                                   return []
+                                 else
+                                   ioError e
 
 load_default :: IO ([EntryTree MBoxEntry], String)
 load_default =  get_default_file >>= load_initial
