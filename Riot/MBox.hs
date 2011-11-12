@@ -45,14 +45,12 @@ import List
 import IConv
 #endif
 
-#if 1
-import Data.PackedString(PackedString, packString, nilPS, unpackPS)
-#else
+-- TODO(opqdonut): ByteString
 type PackedString = String
 packString = id
 unpackPS = id
 nilPS = []
-#endif
+
 
 -- }}}
 
